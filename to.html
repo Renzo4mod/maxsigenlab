@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAXSI GENERAL LAB AND SCHOOL SUPPLIES | Science is Practicals</title>
+    <link rel="icon" type="image/png" sizes="100x100" href="https://z-cdn-media.chatglm.cn/files/00ce45ef-0558-4758-b728-7e28608c3a6a.png?auth_key=1874978825-48e46d0f194e4f6386a0a0ff2b40c1ed-0-62b5fcdc8483d08c53f215ed0171fad9">
+    <link rel="apple-touch-icon" sizes="100x100" href="https://z-cdn-media.chatglm.cn/files/00ce45ef-0558-4758-b728-7e28608c3a6a.png?auth_key=1874978825-48e46d0f194e4f6386a0a0ff2b40c1ed-0-62b5fcdc8483d08c53f215ed0171fad9">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        maxsi: {
+                            blue: '#1E3A8A',
+                            'blue-dark': '#0F172A',
+                            'blue-mid': '#1E40AF',
+                            'blue-light': '#3B82F6',
+                            'blue-pale': '#DBEAFE',
+                            'blue-50': '#EFF6FF',
+                            orange: '#F97316',
+                            'orange-dark': '#EA580C',
+                            'orange-light': '#FED7AA',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::selection { background: #1E3A8A; color: white; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; }
+        .hero-gradient {
+            background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 50%, #1E40AF 100%);
+        }
+        .hero-pattern {
+            background-image: radial-gradient(circle at 20% 50%, rgba(59,130,246,0.15) 0%, transparent 50%),
+                              radial-gradient(circle at 80% 20%, rgba(249,115,22,0.1) 0%, transparent 40%),
+                              radial-gradient(circle at 60% 80%, rgba(59,130,246,0.1) 0%, transparent 40%);
+        }
+        .glass-card {
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.12);
+        }
+        .glass-white {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(12px);
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .float-anim { animation: float 6s ease-in-out infinite; }
+        .float-anim-delay { animation: float 6s ease-in-out 2s infinite; }
+        @keyframes pulse-ring {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+        .pulse-ring::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            border: 2px solid #22C55E;
+            animation: pulse-ring 1.5s ease-out infinite;
+        }
+        .table-row-hover:hover {
+            background: #EFF6FF;
+            transition: background 0.2s;
+        }
+        .tab-active {
+            background: #1E3A8A;
+            color: white;
+            box-shadow: 0 4px 14px rgba(30,58,138,0.3);
+        }
+        .whatsapp-float {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 999;
+            animation: float 3s ease-in-out infinite;
+        }
+        .motto-accent {
+            background: linear-gradient(135deg, #F97316, #FB923C);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .card-lift {
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card-lift:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(30,58,138,0.12);
+        }
+        @keyframes slide-up {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-slide-up { animation: slide-up 0.6s ease-out forwards; }
+        .product-table-wrap {
+            max-height: 600px;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: #1E3A8A #E2E8F0;
+        }
+        .product-table-wrap::-webkit-scrollbar { width: 6px; }
+        .product-table-wrap::-webkit-scrollbar-track { background: #E2E8F0; border-radius: 3px; }
+        .product-table-wrap::-webkit-scrollbar-thumb { background: #1E3A8A; border-radius: 3px; }
+        .toast { animation: slide-up 0.4s ease-out forwards; }
+    </style>
+</head>
+<body class="bg-white text-slate-700">
+
+    <!-- ========== HEADER ========== -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="flex items-center justify-between h-28">
+                <a href="#" class="flex items-center gap-3 group">
+                    <img src="https://z-cdn-media.chatglm.cn/files/00ce45ef-0558-4758-b728-7e28608c3a6a.png?auth_key=1874978825-48e46d0f194e4f6386a0a0ff2b40c1ed-0-62b5fcdc8483d08c53f215ed0171fad9" alt="MAXSI Logo" class="w-[100px] h-[100px] rounded-2xl object-contain bg-white p-1.5 shadow-lg">
+                    <div>
+                        <span class="text-lg sm:text-xl font-extrabold tracking-tight text-white group-hover:text-maxsi-orange transition-colors">MAXSI GENERAL LAB</span>
+                        <span class="hidden sm:inline text-xs font-medium text-blue-200 block -mt-1">& SCHOOL SUPPLIES</span>
+                    </div>
+                </a>
+                <nav class="hidden lg:flex items-center gap-1">
+                    <a href="#hero" class="px-4 py-2 text-sm font-medium text-blue-100 hover:text-white hover:bg-white/10 rounded-lg transition-all">Home</a>
+                    <a href="#products" class="px-4 py-2 text-sm font-medium text-blue-100 hover:text-white hover:bg-white/10 rounded-lg transition-all">Products</a>
+                    <a href="#services" class="px-4 py-2 text-sm font-medium text-blue-100 hover:text-white hover:bg-white/10 rounded-lg transition-all">Services</a>
+                    <a href="#about" class="px-4 py-2 text-sm font-medium text-blue-100 hover:text-white hover:bg-white/10 rounded-lg transition-all">About</a>
+                    <a href="#contact" class="px-4 py-2 text-sm font-medium text-blue-100 hover:text-white hover:bg-white/10 rounded-lg transition-all">Contact</a>
+                    <a href="https://wa.me/254721329595" target="_blank" class="ml-3 inline-flex items-center gap-2 bg-maxsi-orange hover:bg-maxsi-orange-dark text-white font-semibold text-sm px-5 py-2.5 rounded-xl shadow-lg hover:shadow-xl transition-all">
+                        <i data-lucide="message-circle" class="w-4 h-4"></i> WhatsApp
+                    </a>
+                </nav>
+                <button id="menuToggle" class="lg:hidden text-white p-2 hover:bg-white/10 rounded-lg transition">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+        <div id="mobileMenu" class="lg:hidden hidden bg-maxsi-blue-dark/98 backdrop-blur-xl border-t border-white/10">
+            <div class="px-6 py-4 space-y-1">
+                <a href="#hero" class="block px-4 py-3 text-blue-100 hover:text-white hover:bg-white/10 rounded-lg transition mobile-link">Home</a>
+                <a href="#products" class="block px-4 py-3 text-blue-100 hover:text-white hover:bg-white/10 rounded-lg transition mobile-link">Products</a>
+                <a href="#services" class="block px-4 py-3 text-blue-100 hover:text-white hover:bg-white/10 rounded-lg transition mobile-link">Services</a>
+                <a href="#about" class="block px-4 py-3 text-blue-100 hover:text-white hover:bg-white/10 rounded-lg transition mobile-link">About</a>
+                <a href="#contact" class="block px-4 py-3 text-blue-100 hover:text-white hover:bg-white/10 rounded-lg transition mobile-link">Contact</a>
+                <a href="https://wa.me/254721329595" target="_blank" class="flex items-center justify-center gap-2 bg-maxsi-orange text-white font-semibold py-3 rounded-xl mt-3">
+                    <i data-lucide="message-circle" class="w-4 h-4"></i> Chat on WhatsApp
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ========== HERO ========== -->
+    <section id="hero" class="hero-gradient hero-pattern relative min-h-screen flex items-center overflow-hidden">
+        <div class="absolute top-20 right-10 w-72 h-72 bg-maxsi-blue-light/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-20 left-10 w-96 h-96 bg-maxsi-orange/8 rounded-full blur-3xl"></div>
+        <div class="absolute top-1/4 right-1/4 float-anim opacity-20">
+            <svg width="120" height="120" viewBox="0 0 120 120" fill="none"><circle cx="60" cy="40" r="20" stroke="white" stroke-width="1.5"/><line x1="60" y1="60" x2="60" y2="100" stroke="white" stroke-width="1.5"/><line x1="40" y1="80" x2="80" y2="80" stroke="white" stroke-width="1.5"/></svg>
+        </div>
+        <div class="absolute bottom-1/3 right-10 float-anim-delay opacity-15">
+            <svg width="80" height="80" viewBox="0 0 80 80" fill="none"><path d="M40 10 L50 30 L70 30 L54 44 L60 65 L40 52 L20 65 L26 44 L10 30 L30 30 Z" stroke="white" stroke-width="1.5" fill="none"/></svg>
+        </div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 pt-40 pb-20 w-full">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                <div class="space-y-8">
+                    <div class="inline-flex items-center gap-2 bg-maxsi-orange/15 border border-maxsi-orange/30 rounded-full px-5 py-2">
+                        <i data-lucide="flask-conical" class="w-4 h-4 text-maxsi-orange"></i>
+                        <span class="text-maxsi-orange font-bold text-sm tracking-wide uppercase">Science is Practicals</span>
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white leading-[0.95] tracking-tight">
+                        We Supply<br>Everything<br>
+                        <span class="motto-accent">Your Lab Needs</span>
+                    </h1>
+                    <p class="text-lg sm:text-xl text-blue-200/90 leading-relaxed max-w-xl">
+                        From complex chemical reagents to custom-built laboratory furniture and gas installation. Founded by Chemical Analyst Bernard Maina — we believe science happens in the lab, not just the textbook.
+                    </p>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="glass-card text-blue-100 text-xs font-semibold px-4 py-2 rounded-lg flex items-center gap-2">
+                            <i data-lucide="flame" class="w-3.5 h-3.5 text-maxsi-orange"></i> Gas Installation
+                        </span>
+                        <span class="glass-card text-blue-100 text-xs font-semibold px-4 py-2 rounded-lg flex items-center gap-2">
+                            <i data-lucide="droplets" class="w-3.5 h-3.5 text-maxsi-orange"></i> Water Installation
+                        </span>
+                        <span class="glass-card text-blue-100 text-xs font-semibold px-4 py-2 rounded-lg flex items-center gap-2">
+                            <i data-lucide="pencil-ruler" class="w-3.5 h-3.5 text-maxsi-orange"></i> Lab Design
+                        </span>
+                        <span class="glass-card text-blue-100 text-xs font-semibold px-4 py-2 rounded-lg flex items-center gap-2">
+                            <i data-lucide="armchair" class="w-3.5 h-3.5 text-maxsi-orange"></i> Custom Furniture
+                        </span>
+                    </div>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="https://wa.me/254721329595" target="_blank" class="inline-flex items-center justify-center gap-3 bg-maxsi-orange hover:bg-maxsi-orange-dark text-white font-bold text-lg px-8 py-4 rounded-2xl shadow-xl hover:shadow-2xl hover:shadow-orange-500/20 transition-all duration-300 group">
+                            <svg class="w-6 h-6 group-hover:scale-110 transition-transform" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                            Chat on WhatsApp
+                        </a>
+                        <a href="#products" class="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white font-semibold text-lg px-8 py-4 rounded-2xl border border-white/20 hover:border-white/40 transition-all duration-300">
+                            <i data-lucide="package" class="w-5 h-5"></i> View Products
+                        </a>
+                    </div>
+                    <div class="flex items-center gap-3 text-blue-300/70 text-sm">
+                        <div class="flex items-center gap-1.5">
+                            <i data-lucide="shield-check" class="w-4 h-4 text-green-400"></i>
+                            <span>Trusted Since 2016</span>
+                        </div>
+                        <span class="text-blue-500">•</span>
+                        <span>Founded by Bernard Maina</span>
+                    </div>
+                </div>
+
+                <!-- Right - Logo & Visual -->
+                <div class="relative flex justify-center lg:justify-end">
+                    <div class="relative">
+                        <div class="w-[100px] h-[100px] rounded-2xl overflow-hidden shadow-2xl shadow-black/30 border-2 border-white/10 float-anim bg-white p-1">
+                            <img src="https://z-cdn-media.chatglm.cn/files/00ce45ef-0558-4758-b728-7e28608c3a6a.png?auth_key=1874978825-48e46d0f194e4f6386a0a0ff2b40c1ed-0-62b5fcdc8483d08c53f215ed0171fad9" alt="MAXSI Science Lab" class="w-full h-full object-contain">
+                        </div>
+                        <!-- Floating Card - Contact -->
+                        <div class="absolute -bottom-6 -left-6 sm:-left-10 glass-white rounded-2xl p-4 shadow-2xl max-w-[220px]">
+                            <div class="flex items-center gap-3 mb-2">
+                                <div class="relative w-10 h-10 bg-green-500 rounded-full flex items-center justify-center pulse-ring">
+                                    <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                                </div>
+                                <div>
+                                    <p class="text-xs font-bold text-slate-800">WhatsApp Us</p>
+                                    <p class="text-xs text-slate-500">Quick Response</p>
+                                </div>
+                            </div>
+                            <p class="text-sm font-bold text-maxsi-blue">0721 329 595</p>
+                        </div>
+                        <!-- Floating Card - Email -->
+                        <div class="absolute -top-4 -right-4 sm:-right-8 glass-white rounded-2xl p-3 shadow-2xl float-anim-delay">
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 bg-maxsi-blue rounded-lg flex items-center justify-center">
+                                    <i data-lucide="mail" class="w-4 h-4 text-white"></i>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] font-bold text-slate-800">Email</p>
+                                    <p class="text-[10px] text-slate-500 truncate max-w-[130px]">maxsigenlab2016@gmail.com</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-0 left-0 right-0">
+            <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 80V30C240 0 480 60 720 40C960 20 1200 0 1440 30V80H0Z" fill="white"/></svg>
+        </div>
+    </section>
+
+    <!-- ========== MOTTO BANNER ========== -->
+    <section class="bg-white py-8 border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-12 text-center">
+                <div class="flex items-center gap-2">
+                    <i data-lucide="flask-conical" class="w-5 h-5 text-maxsi-orange"></i>
+                    <span class="font-serif text-xl sm:text-2xl font-semibold text-maxsi-blue">Science is Practicals</span>
+                </div>
+                <div class="hidden sm:block w-px h-8 bg-slate-200"></div>
+                <p class="text-sm text-slate-500">Quality Apparatus. Expert Installations. Hands-On Solutions.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== PRODUCTS ========== -->
+    <section id="products" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <div class="inline-flex items-center gap-2 bg-maxsi-blue/5 border border-maxsi-blue/15 rounded-full px-4 py-1.5 mb-6">
+                    <i data-lucide="package" class="w-3.5 h-3.5 text-maxsi-blue"></i>
+                    <span class="text-xs font-bold text-maxsi-blue uppercase tracking-wider">Our Products</span>
+                </div>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-maxsi-blue-dark tracking-tight mb-4">Complete Lab & School Supply Catalogue</h2>
+                <p class="text-lg text-slate-500 leading-relaxed">Browse our extensive range of laboratory equipment, chemicals, and furniture. All prices include V.A.T.</p>
+            </div>
+            <div class="max-w-xl mx-auto mb-8">
+                <div class="relative">
+                    <i data-lucide="search" class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400"></i>
+                    <input type="text" id="productSearch" placeholder="Search products (e.g. microscope, beaker, acid...)" class="w-full pl-12 pr-4 py-3.5 rounded-2xl border border-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-maxsi-blue/30 focus:border-maxsi-blue text-sm transition">
+                </div>
+            </div>
+            <div class="flex flex-wrap justify-center gap-3 mb-8">
+                <button onclick="switchTab('equipment')" id="tab-equipment" class="tab-btn tab-active px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-300 flex items-center gap-2">
+                    <i data-lucide="microscope" class="w-4 h-4"></i> Lab Equipment & Apparatus
+                </button>
+                <button onclick="switchTab('chemicals')" id="tab-chemicals" class="tab-btn bg-white border border-slate-200 text-slate-600 hover:border-maxsi-blue/30 px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-300 flex items-center gap-2">
+                    <i data-lucide="flask-conical" class="w-4 h-4"></i> Chemicals & Reagents
+                </button>
+                <button onclick="switchTab('furniture')" id="tab-furniture" class="tab-btn bg-white border border-slate-200 text-slate-600 hover:border-maxsi-blue/30 px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-300 flex items-center gap-2">
+                    <i data-lucide="armchair" class="w-4 h-4"></i> Furniture & Installations
+                </button>
+            </div>
+            <div class="flex items-center justify-between mb-4">
+                <p id="resultCount" class="text-sm text-slate-500"></p>
+                <p class="text-xs text-slate-400">Scroll to see all items →</p>
+            </div>
+
+            <!-- Equipment Table -->
+            <div id="panel-equipment" class="tab-panel">
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+                    <div class="product-table-wrap">
+                        <table class="w-full text-sm" id="table-equipment">
+                            <thead class="sticky top-0 bg-maxsi-blue z-10">
+                                <tr>
+                                    <th class="text-left py-4 px-5 text-white font-semibold text-xs uppercase tracking-wider">Item</th>
+                                    <th class="text-left py-4 px-5 text-white font-semibold text-xs uppercase tracking-wider hidden sm:table-cell">Specification / Size</th>
+                                    <th class="text-right py-4 px-5 text-white font-semibold text-xs uppercase tracking-wider">Price (KES)</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100">
+                                <tr class="table-row-hover" data-name="ammeter analogue"><td class="py-3 px-5 font-medium text-slate-800">Ammeter</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">Analogue all ranges</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">350</td></tr>
+                                <tr class="table-row-hover" data-name="ammeter digital"><td class="py-3 px-5 font-medium text-slate-800">Ammeter</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">Digital</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">1,200</td></tr>
+                                <tr class="table-row-hover" data-name="autoclave electrical"><td class="py-3 px-5 font-medium text-slate-800">Autoclave</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">Electrical</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">17,000</td></tr>
+                                <tr class="table-row-hover" data-name="balance chemical model 110gm"><td class="py-3 px-5 font-medium text-slate-800">Balance</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">Chemical (Model 110gm)</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">5,500</td></tr>
+                                <tr class="table-row-hover" data-name="balance electronic 0.001"><td class="py-3 px-5 font-medium text-slate-800">Balance</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">Electronic (0.001)</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">140,000</td></tr>
+                                <tr class="table-row-hover" data-name="balance electronic 200 300 gm 0.1"><td class="py-3 px-5 font-medium text-slate-800">Balance</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">Electronic (200/300 gm, 0.1)</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">16,000</td></tr>
+                                <tr class="table-row-hover" data-name="balance mechanical triple beam 2610 gm"><td class="py-3 px-5 font-medium text-slate-800">Balance</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">Mechanical triple beam (2610 gm)</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">34,000</td></tr>
+                                <tr class="table-row-hover" data-name="barometer fortins"><td class="py-3 px-5 font-medium text-slate-800">Barometer</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">Fortins</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">7,400</td></tr>
+                                <tr class="table-row-hover" data-name="beaker glass borosil 50 ml"><td class="py-3 px-5 font-medium text-slate-800">Beaker (Glass Borosil)</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">50 ml</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">144</td></tr>
+                                <tr class="table-row-hover" data-name="beaker glass borosil 100 ml"><td class="py-3 px-5 font-medium text-slate-800">Beaker (Glass Borosil)</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">100 ml</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">170</td></tr>
+                                <tr class="table-row-hover" data-name="beaker glass borosil 250 ml"><td class="py-3 px-5 font-medium text-slate-800">Beaker (Glass Borosil)</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">250 ml</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">210</td></tr>
+                                <tr class="table-row-hover" data-name="beaker glass borosil 500 ml"><td class="py-3 px-5 font-medium text-slate-800">Beaker (Glass Borosil)</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">500 ml</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">500</td></tr>
+                                <tr class="table-row-hover" data-name="beaker glass borosil 1000 ml"><td class="py-3 px-5 font-medium text-slate-800">Beaker (Glass Borosil)</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">1000 ml</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">900</td></tr>
+                                <tr class="table-row-hover" data-name="beaker glass borosil 2000 ml"><td class="py-3 px-5 font-medium text-slate-800">Beaker (Glass Borosil)</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">2000 ml</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">1,800</td></tr>
+                                <tr class="table-row-hover" data-name="beaker plastic 100 ml"><td class="py-3 px-5 font-medium text-slate-800">Beaker (Plastic)</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">100 ml</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">150</td></tr>
+                                <tr class="table-row-hover" data-name="beaker plastic 500 ml"><td class="py-3 px-5 font-medium text-slate-800">Beaker (Plastic)</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">500 ml</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">250</td></tr>
+                                <tr class="table-row-hover" data-name="beaker plastic 1000 ml"><td class="py-3 px-5 font-medium text-slate-800">Beaker (Plastic)</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">1000 ml</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">350</td></tr>
+                                <tr class="table-row-hover" data-name="beaker pyrex 250 ml"><td class="py-3 px-5 font-medium text-slate-800">Beaker (Pyrex)</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">250 ml</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">650</td></tr>
+                                <tr class="table-row-hover" data-name="bell in vacuum air pump plate"><td class="py-3 px-5 font-medium text-slate-800">Bell in Vacuum</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">With air pump with plate</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">4,000</td></tr>
+                                <tr class="table-row-hover" data-name="boiling tubes rim 24x150"><td class="py-3 px-5 font-medium text-slate-800">Boiling Tubes with Rim</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">24x150</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">70</td></tr>
+                                <tr class="table-row-hover" data-name="boss head"><td class="py-3 px-5 font-medium text-slate-800">Boss Head</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">—</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">300</td></tr>
+                                <tr class="table-row-hover" data-name="buchner funnel 4 inch"><td class="py-3 px-5 font-medium text-slate-800">Buchner Funnel</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">4"</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">990</td></tr>
+                                <tr class="table-row-hover" data-name="bunsen burner"><td class="py-3 px-5 font-medium text-slate-800">Bunsen Burner</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">—</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">550</td></tr>
+                                <tr class="table-row-hover" data-name="burette 50 ml borosil"><td class="py-3 px-5 font-medium text-slate-800">Burette</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">50 ml (Borosil)</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">1,500</td></tr>
+                                <tr class="table-row-hover" data-name="burette 50 ml china pinch type"><td class="py-3 px-5 font-medium text-slate-800">Burette</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">50 ml (China, pinch type)</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">1,050</td></tr>
+                                <tr class="table-row-hover" data-name="burette stand wooden"><td class="py-3 px-5 font-medium text-slate-800">Burette Stand</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">Wooden</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">650</td></tr>
+                                <tr class="table-row-hover" data-name="cathode ray oscilloscope 5 mhz"><td class="py-3 px-5 font-medium text-slate-800">Cathode Ray Oscilloscope</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">5 MHz</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">55,000</td></tr>
+                                <tr class="table-row-hover" data-name="centrifuge electrical"><td class="py-3 px-5 font-medium text-slate-800">Centrifuge</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">Electrical</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">15,000</td></tr>
+                                <tr class="table-row-hover" data-name="centrifuge manual"><td class="py-3 px-5 font-medium text-slate-800">Centrifuge</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">Manual</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">20,000</td></tr>
+                                <tr class="table-row-hover" data-name="conical flask china 250 ml"><td class="py-3 px-5 font-medium text-slate-800">Conical Flask (China)</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">250 ml</td><td class="py-3 px-5 text-right font-semibold text-slate-400">On Request</td></tr>
+                                <tr class="table-row-hover" data-name="conical flask pyrex 250 ml"><td class="py-3 px-5 font-medium text-slate-800">Conical Flask (Pyrex)</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">250 ml</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">700</td></tr>
+                                <tr class="table-row-hover" data-name="conical flask pyrex 500 ml"><td class="py-3 px-5 font-medium text-slate-800">Conical Flask (Pyrex)</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">500 ml</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">800</td></tr>
+                                <tr class="table-row-hover" data-name="conical flask pyrex 1000 ml"><td class="py-3 px-5 font-medium text-slate-800">Conical Flask (Pyrex)</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">1000 ml</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">1,950</td></tr>
+                                <tr class="table-row-hover" data-name="desiccator knob 4 inch"><td class="py-3 px-5 font-medium text-slate-800">Desiccator with Knob</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">4"</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">2,000</td></tr>
+                                <tr class="table-row-hover" data-name="dissecting kit 14 instruments"><td class="py-3 px-5 font-medium text-slate-800">Dissecting Kit</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">Complete set (14 instruments)</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">600</td></tr>
+                                <tr class="table-row-hover" data-name="dissecting kit 18 instruments"><td class="py-3 px-5 font-medium text-slate-800">Dissecting Kit</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">Complete set (18 instruments)</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">900</td></tr>
+                                <tr class="table-row-hover" data-name="dynamo working model"><td class="py-3 px-5 font-medium text-slate-800">Dynamo</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">Working model</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">1,500</td></tr>
+                                <tr class="table-row-hover" data-name="electric motor 3v 6v"><td class="py-3 px-5 font-medium text-slate-800">Electric Motor</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">3V, 6V</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">600</td></tr>
+                                <tr class="table-row-hover" data-name="filter flask 250 ml"><td class="py-3 px-5 font-medium text-slate-800">Filter Flask</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">250 ml</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">550</td></tr>
+                                <tr class="table-row-hover" data-name="filter paper whatman 110 125 mm"><td class="py-3 px-5 font-medium text-slate-800">Filter Paper</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">Whatman (110 & 125 mm) PKT</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">700</td></tr>
+                                <tr class="table-row-hover" data-name="fire extinguisher carbon dry powder foam"><td class="py-3 px-5 font-medium text-slate-800">Fire Extinguisher</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">Carbon, dry powder, foam</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">15,000</td></tr>
+                                <tr class="table-row-hover" data-name="first aid box large"><td class="py-3 px-5 font-medium text-slate-800">First Aid Box</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">Large</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">8,500</td></tr>
+                                <tr class="table-row-hover" data-name="first aid box medium"><td class="py-3 px-5 font-medium text-slate-800">First Aid Box</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">Medium</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">4,500</td></tr>
+                                <tr class="table-row-hover" data-name="first aid box small"><td class="py-3 px-5 font-medium text-slate-800">First Aid Box</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">Small</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">3,000</td></tr>
+                                <tr class="table-row-hover" data-name="funnel glass 75 mm"><td class="py-3 px-5 font-medium text-slate-800">Funnel (Glass)</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">75 mm</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">200</td></tr>
+                                <tr class="table-row-hover" data-name="funnel plastic 100 mm"><td class="py-3 px-5 font-medium text-slate-800">Funnel (Plastic)</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">100 mm</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">200</td></tr>
+                                <tr class="table-row-hover" data-name="g-clamp 3 inch"><td class="py-3 px-5 font-medium text-slate-800">G-Clamp</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">3"</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">450</td></tr>
+                                <tr class="table-row-hover" data-name="galvanometer centre-zero"><td class="py-3 px-5 font-medium text-slate-800">Galvanometer</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">Centre-zero</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">1,500</td></tr>
+                                <tr class="table-row-hover" data-name="gas burner portable stove"><td class="py-3 px-5 font-medium text-slate-800">Gas Burner</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">Portable stove</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">3,000</td></tr>
+                                <tr class="table-row-hover" data-name="hydrometer wet dry uk"><td class="py-3 px-5 font-medium text-slate-800">Hydrometer</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">Wet & dry (UK)</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">3,500</td></tr>
+                                <tr class="table-row-hover" data-name="incubator electrical"><td class="py-3 px-5 font-medium text-slate-800">Incubator</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">Electrical</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">35,500</td></tr>
+                                <tr class="table-row-hover" data-name="kymography equipment complete"><td class="py-3 px-5 font-medium text-slate-800">Kymography Equipment</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">Complete</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">18,000</td></tr>
+                                <tr class="table-row-hover" data-name="lab coats"><td class="py-3 px-5 font-medium text-slate-800">Lab Coats</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">—</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">1,200</td></tr>
+                                <tr class="table-row-hover" data-name="measuring cylinder glass 100 ml"><td class="py-3 px-5 font-medium text-slate-800">Measuring Cylinder (Glass)</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">100 ml</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">290</td></tr>
+                                <tr class="table-row-hover" data-name="measuring cylinder glass 500 ml"><td class="py-3 px-5 font-medium text-slate-800">Measuring Cylinder (Glass)</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">500 ml</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">1,050</td></tr>
+                                <tr class="table-row-hover" data-name="measuring cylinder glass 1000 ml"><td class="py-3 px-5 font-medium text-slate-800">Measuring Cylinder (Glass)</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">1000 ml</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">1,500</td></tr>
+                                <tr class="table-row-hover" data-name="measuring cylinder plastic 100 ml"><td class="py-3 px-5 font-medium text-slate-800">Measuring Cylinder (Plastic)</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">100 ml</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">270</td></tr>
+                                <tr class="table-row-hover" data-name="measuring cylinder plastic 500 ml"><td class="py-3 px-5 font-medium text-slate-800">Measuring Cylinder (Plastic)</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">500 ml</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">850</td></tr>
+                                <tr class="table-row-hover" data-name="meter rule wooden"><td class="py-3 px-5 font-medium text-slate-800">Meter Rule</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">Full wooden</td><td class="py-3 px-5 text-right font-semibold text-slate-400">On Request</td></tr>
+                                <tr class="table-row-hover" data-name="micrometer screw gauge"><td class="py-3 px-5 font-medium text-slate-800">Micrometer Screw Gauge</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">—</td><td class="py-3 px-5 text-right font-semibold text-slate-400">On Request</td></tr>
+                                <tr class="table-row-hover" data-name="microscope binocular ordinary"><td class="py-3 px-5 font-medium text-slate-800">Microscope</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">Binocular (Ordinary)</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">45,000</td></tr>
+                                <tr class="table-row-hover" data-name="microscope binocular superior"><td class="py-3 px-5 font-medium text-slate-800">Microscope</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">Binocular (Superior)</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">75,000</td></tr>
+                                <tr class="table-row-hover" data-name="microscope dissecting compound"><td class="py-3 px-5 font-medium text-slate-800">Microscope</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">Dissecting (Compound)</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">50,000</td></tr>
+                                <tr class="table-row-hover" data-name="microscope student"><td class="py-3 px-5 font-medium text-slate-800">Microscope</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">Student</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">14,000</td></tr>
+                                <tr class="table-row-hover" data-name="microscope cover slips 22x22"><td class="py-3 px-5 font-medium text-slate-800">Microscope Cover Slips</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">22x22</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">130</td></tr>
+                                <tr class="table-row-hover" data-name="microscope objective lenses 5 10 15 40 45"><td class="py-3 px-5 font-medium text-slate-800">Microscope Objective Lenses</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">*5, *10, *15, *40, *45</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">1,500</td></tr>
+                                <tr class="table-row-hover" data-name="microscope objective lens 100"><td class="py-3 px-5 font-medium text-slate-800">Microscope Objective Lenses</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">*100</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">5,000</td></tr>
+                                <tr class="table-row-hover" data-name="microscope slides pkt"><td class="py-3 px-5 font-medium text-slate-800">Microscope Slides</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">PKT</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">300</td></tr>
+                                <tr class="table-row-hover" data-name="multimeter avometer"><td class="py-3 px-5 font-medium text-slate-800">Multimeter (Avometer)</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">—</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">1,500</td></tr>
+                                <tr class="table-row-hover" data-name="optical bench complete accessories"><td class="py-3 px-5 font-medium text-slate-800">Optical Bench</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">Complete with accessories</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">3,250</td></tr>
+                                <tr class="table-row-hover" data-name="oscilloscope 5 mhz"><td class="py-3 px-5 font-medium text-slate-800">Oscilloscope</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">5 MHz</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">55,000</td></tr>
+                                <tr class="table-row-hover" data-name="petri dish glass 90 mm"><td class="py-3 px-5 font-medium text-slate-800">Petri Dish (Glass)</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">90 mm</td><td class="py-3 px-5 text-right font-semibold text-slate-400">On Request</td></tr>
+                                <tr class="table-row-hover" data-name="ph meter bench type"><td class="py-3 px-5 font-medium text-slate-800">pH Meter</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">Bench type</td><td class="py-3 px-5 text-right font-semibold text-slate-400">On Request</td></tr>
+                                <tr class="table-row-hover" data-name="ph meter pocket type digital"><td class="py-3 px-5 font-medium text-slate-800">pH Meter</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">Pocket type (Digital)</td><td class="py-3 px-5 text-right font-semibold text-slate-400">On Request</td></tr>
+                                <tr class="table-row-hover" data-name="potentiometer pencil jockey"><td class="py-3 px-5 font-medium text-slate-800">Potentiometer</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">With pencil jockey</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">3,200</td></tr>
+                                <tr class="table-row-hover" data-name="power supply unit power pack 25 30v meters"><td class="py-3 px-5 font-medium text-slate-800">Power Supply Unit</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">25/30V with meters</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">28,000</td></tr>
+                                <tr class="table-row-hover" data-name="retort stand complete boss head clamp"><td class="py-3 px-5 font-medium text-slate-800">Retort Stand</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">Complete with boss head & clamp</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">1,200</td></tr>
+                                <tr class="table-row-hover" data-name="rheostat"><td class="py-3 px-5 font-medium text-slate-800">Rheostat</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">—</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">250</td></tr>
+                                <tr class="table-row-hover" data-name="separating funnel 250 ml"><td class="py-3 px-5 font-medium text-slate-800">Separating Funnel</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">250 ml</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">7,000</td></tr>
+                                <tr class="table-row-hover" data-name="stop watch digital"><td class="py-3 px-5 font-medium text-slate-800">Stop Watch</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">Digital</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">600</td></tr>
+                                <tr class="table-row-hover" data-name="stop watch metallic manual"><td class="py-3 px-5 font-medium text-slate-800">Stop Watch</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">Metallic manual</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">7,500</td></tr>
+                                <tr class="table-row-hover" data-name="test tube stand wooden 12 holes"><td class="py-3 px-5 font-medium text-slate-800">Test Tube Stand</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">Wooden 12 holes</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">200</td></tr>
+                                <tr class="table-row-hover" data-name="thermometer -10 to 110 dc"><td class="py-3 px-5 font-medium text-slate-800">Thermometer</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">-10 to 110 DC</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">300</td></tr>
+                                <tr class="table-row-hover" data-name="thermometer clinical"><td class="py-3 px-5 font-medium text-slate-800">Thermometer</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">Clinical</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">400</td></tr>
+                                <tr class="table-row-hover" data-name="ticker tape timer complete"><td class="py-3 px-5 font-medium text-slate-800">Ticker Tape Timer</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">Complete</td><td class="py-3 px-5 text-right font-semibold text-slate-400">On Request</td></tr>
+                                <tr class="table-row-hover" data-name="tuning fork set of 8"><td class="py-3 px-5 font-medium text-slate-800">Tuning Fork</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">Set of 8</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">1,500</td></tr>
+                                <tr class="table-row-hover" data-name="van de graff generator manual"><td class="py-3 px-5 font-medium text-slate-800">Van De Graff Generator</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">Manual</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">9,500</td></tr>
+                                <tr class="table-row-hover" data-name="vernier callipers analogue"><td class="py-3 px-5 font-medium text-slate-800">Vernier Callipers</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">Analogue</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">1,500</td></tr>
+                                <tr class="table-row-hover" data-name="voltmeter digital"><td class="py-3 px-5 font-medium text-slate-800">Voltmeter</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">Digital</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">3,500</td></tr>
+                                <tr class="table-row-hover" data-name="volumetric flask 250 ml"><td class="py-3 px-5 font-medium text-slate-800">Volumetric Flask</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">250 ml</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">600</td></tr>
+                                <tr class="table-row-hover" data-name="volumetric flask 500 ml"><td class="py-3 px-5 font-medium text-slate-800">Volumetric Flask</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">500 ml</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">950</td></tr>
+                                <tr class="table-row-hover" data-name="volumetric flask 1000 ml"><td class="py-3 px-5 font-medium text-slate-800">Volumetric Flask</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">1000 ml</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">1,800</td></tr>
+                                <tr class="table-row-hover" data-name="wash bottle 500 ml"><td class="py-3 px-5 font-medium text-slate-800">Wash Bottle</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">500 ml</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">200</td></tr>
+                                <tr class="table-row-hover" data-name="water distiller stainless steel"><td class="py-3 px-5 font-medium text-slate-800">Water Distiller</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">Stainless steel</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">30,000</td></tr>
+                                <tr class="table-row-hover" data-name="weights slotted 10 gm"><td class="py-3 px-5 font-medium text-slate-800">Weights (Slotted)</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">10 gm</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">400</td></tr>
+                                <tr class="table-row-hover" data-name="weights hooks 100 gm"><td class="py-3 px-5 font-medium text-slate-800">Weights with Hooks</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">100 gm</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">120</td></tr>
+                                <tr class="table-row-hover" data-name="wire gauze asbestos mat"><td class="py-3 px-5 font-medium text-slate-800">Wire Gauze</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">With asbestos mat</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">100</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chemicals Table -->
+            <div id="panel-chemicals" class="tab-panel hidden">
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+                    <div class="product-table-wrap">
+                        <table class="w-full text-sm" id="table-chemicals">
+                            <thead class="sticky top-0 bg-maxsi-blue z-10">
+                                <tr>
+                                    <th class="text-left py-4 px-5 text-white font-semibold text-xs uppercase tracking-wider">Chemical / Reagent</th>
+                                    <th class="text-left py-4 px-5 text-white font-semibold text-xs uppercase tracking-wider hidden sm:table-cell">Quantity</th>
+                                    <th class="text-right py-4 px-5 text-white font-semibold text-xs uppercase tracking-wider">Price (KES)</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100">
+                                <tr class="table-row-hover" data-name="acetic acid glacial 2.5 lt"><td class="py-3 px-5 font-medium text-slate-800">Acetic Acid Glacial</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">2.5 LT</td><td class="py-3 px-5 text-right font-semibold text-slate-400">On Request</td></tr>
+                                <tr class="table-row-hover" data-name="acetone lp 2.5 lt"><td class="py-3 px-5 font-medium text-slate-800">Acetone LP</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">2.5 LT</td><td class="py-3 px-5 text-right font-semibold text-slate-400">On Request</td></tr>
+                                <tr class="table-row-hover" data-name="ammonium chloride 500 gm"><td class="py-3 px-5 font-medium text-slate-800">Ammonium Chloride</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">500 GM</td><td class="py-3 px-5 text-right font-semibold text-slate-400">On Request</td></tr>
+                                <tr class="table-row-hover" data-name="barium chloride 500 gm"><td class="py-3 px-5 font-medium text-slate-800">Barium Chloride</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">500 GM</td><td class="py-3 px-5 text-right font-semibold text-slate-400">On Request</td></tr>
+                                <tr class="table-row-hover" data-name="benedict solution 1 lt"><td class="py-3 px-5 font-medium text-slate-800">Benedict Solution</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">1 LT</td><td class="py-3 px-5 text-right font-semibold text-slate-400">On Request</td></tr>
+                                <tr class="table-row-hover" data-name="biuret reagent 1 lt"><td class="py-3 px-5 font-medium text-slate-800">Biuret Reagent</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">1 LT</td><td class="py-3 px-5 text-right font-semibold text-slate-400">On Request</td></tr>
+                                <tr class="table-row-hover" data-name="bromine liquid 250 ml"><td class="py-3 px-5 font-medium text-slate-800">Bromine Liquid</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">250 ML</td><td class="py-3 px-5 text-right font-semibold text-slate-400">On Request</td></tr>
+                                <tr class="table-row-hover" data-name="calcium carbonate 500 gm"><td class="py-3 px-5 font-medium text-slate-800">Calcium Carbonate</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">500 GM</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">700</td></tr>
+                                <tr class="table-row-hover" data-name="calcium chloride drying 500 gm"><td class="py-3 px-5 font-medium text-slate-800">Calcium Chloride (for drying)</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">500 GM</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">650</td></tr>
+                                <tr class="table-row-hover" data-name="calcium hydroxide 500 gm"><td class="py-3 px-5 font-medium text-slate-800">Calcium Hydroxide</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">500 GM</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">650</td></tr>
+                                <tr class="table-row-hover" data-name="copper sulphate pentahydrate 500 gm"><td class="py-3 px-5 font-medium text-slate-800">Copper (II) Sulphate Pentahydrate</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">500 GM</td><td class="py-3 px-5 text-right font-semibold text-slate-400">On Request</td></tr>
+                                <tr class="table-row-hover" data-name="ethanol absolute local 2.5 lt"><td class="py-3 px-5 font-medium text-slate-800">Ethanol (Absolute) Local</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">2.5 LT</td><td class="py-3 px-5 text-right font-semibold text-slate-400">On Request</td></tr>
+                                <tr class="table-row-hover" data-name="formaldehyde formalin 2.5 lt"><td class="py-3 px-5 font-medium text-slate-800">Formaldehyde (Formalin)</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">2.5 LT</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">750</td></tr>
+                                <tr class="table-row-hover" data-name="glucose 500 gm"><td class="py-3 px-5 font-medium text-slate-800">Glucose</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">500 GM</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">650</td></tr>
+                                <tr class="table-row-hover" data-name="glycerol glycerine 1 lt"><td class="py-3 px-5 font-medium text-slate-800">Glycerol (Glycerine)</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">1 LT</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">750</td></tr>
+                                <tr class="table-row-hover" data-name="hydrochloric acid 1.18-36% local 2.5 lt"><td class="py-3 px-5 font-medium text-slate-800">Hydrochloric Acid (1.18-36%) Local</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">2.5 LT</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">1,800</td></tr>
+                                <tr class="table-row-hover" data-name="hydrogen peroxide 20v 2.5 lt"><td class="py-3 px-5 font-medium text-slate-800">Hydrogen Peroxide 20V</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">2.5 LT</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">850</td></tr>
+                                <tr class="table-row-hover" data-name="iodine crystals 100 gm"><td class="py-3 px-5 font-medium text-slate-800">Iodine Crystals</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">100 GM</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">1,500</td></tr>
+                                <tr class="table-row-hover" data-name="iodine crystals 500 gm"><td class="py-3 px-5 font-medium text-slate-800">Iodine Crystals</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">500 GM</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">6,500</td></tr>
+                                <tr class="table-row-hover" data-name="lead nitrate local 500 gm"><td class="py-3 px-5 font-medium text-slate-800">Lead Nitrate (Local)</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">500 GM</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">670</td></tr>
+                                <tr class="table-row-hover" data-name="litmus paper blue red india 1 pkt"><td class="py-3 px-5 font-medium text-slate-800">Litmus Paper Blue/Red (India)</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">1 PKT</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">450</td></tr>
+                                <tr class="table-row-hover" data-name="magnesium ribbon 25 gm"><td class="py-3 px-5 font-medium text-slate-800">Magnesium Ribbon</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">25 GM</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">650</td></tr>
+                                <tr class="table-row-hover" data-name="magnesium sulphate 500 gm"><td class="py-3 px-5 font-medium text-slate-800">Magnesium Sulphate</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">500 GM</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">850</td></tr>
+                                <tr class="table-row-hover" data-name="manganese dioxide 500 gm"><td class="py-3 px-5 font-medium text-slate-800">Manganese Dioxide</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">500 GM</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">850</td></tr>
+                                <tr class="table-row-hover" data-name="methanol 2.5 lt"><td class="py-3 px-5 font-medium text-slate-800">Methanol</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">2.5 LT</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">1,250</td></tr>
+                                <tr class="table-row-hover" data-name="methyl orange solution local 0.5 lt"><td class="py-3 px-5 font-medium text-slate-800">Methyl Orange Solution (Local)</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">0.5 LT</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">450</td></tr>
+                                <tr class="table-row-hover" data-name="methylene blue solution 0.5 lt"><td class="py-3 px-5 font-medium text-slate-800">Methylene Blue Solution</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">0.5 LT</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">450</td></tr>
+                                <tr class="table-row-hover" data-name="nitric acid local 1 lt"><td class="py-3 px-5 font-medium text-slate-800">Nitric Acid (Local)</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">1 LT</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">700</td></tr>
+                                <tr class="table-row-hover" data-name="phenolphthalein indicator solution 0.5 lt"><td class="py-3 px-5 font-medium text-slate-800">Phenolphthalein Indicator Solution</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">0.5 LT</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">450</td></tr>
+                                <tr class="table-row-hover" data-name="phosphorus red 250 gm"><td class="py-3 px-5 font-medium text-slate-800">Phosphorus Red</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">250 GM</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">1,850</td></tr>
+                                <tr class="table-row-hover" data-name="potassium chlorate 500 gm"><td class="py-3 px-5 font-medium text-slate-800">Potassium Chlorate</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">500 GM</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">1,750</td></tr>
+                                <tr class="table-row-hover" data-name="potassium iodide 500 gm"><td class="py-3 px-5 font-medium text-slate-800">Potassium Iodide</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">500 GM</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">6,500</td></tr>
+                                <tr class="table-row-hover" data-name="potassium permanganate 500 gm"><td class="py-3 px-5 font-medium text-slate-800">Potassium Permanganate</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">500 GM</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">2,500</td></tr>
+                                <tr class="table-row-hover" data-name="silver nitrate 500 gm"><td class="py-3 px-5 font-medium text-slate-800">Silver Nitrate</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">500 GM</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">650</td></tr>
+                                <tr class="table-row-hover" data-name="sodium carbonate anhydrous 500 gm"><td class="py-3 px-5 font-medium text-slate-800">Sodium Carbonate Anhydrous</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">500 GM</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">650</td></tr>
+                                <tr class="table-row-hover" data-name="sodium chloride 500 gm"><td class="py-3 px-5 font-medium text-slate-800">Sodium Chloride</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">500 GM</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">550</td></tr>
+                                <tr class="table-row-hover" data-name="sodium hydroxide pearls 500 gm"><td class="py-3 px-5 font-medium text-slate-800">Sodium Hydroxide Pearls</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">500 GM</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">550</td></tr>
+                                <tr class="table-row-hover" data-name="sodium metal 25 gm"><td class="py-3 px-5 font-medium text-slate-800">Sodium Metal</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">25 GM</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">1,000</td></tr>
+                                <tr class="table-row-hover" data-name="starch soluble 500 gm"><td class="py-3 px-5 font-medium text-slate-800">Starch Soluble</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">500 GM</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">650</td></tr>
+                                <tr class="table-row-hover" data-name="sucrose pure 500 gm"><td class="py-3 px-5 font-medium text-slate-800">Sucrose Pure</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">500 GM</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">850</td></tr>
+                                <tr class="table-row-hover" data-name="sulphur powder 500 gm"><td class="py-3 px-5 font-medium text-slate-800">Sulphur Powder</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">500 GM</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">350</td></tr>
+                                <tr class="table-row-hover" data-name="sulphuric acid local 1 lt"><td class="py-3 px-5 font-medium text-slate-800">Sulphuric Acid (Local)</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">1 LT</td><td class="py-3 px-5 text-right font-semibold text-slate-400">On Request</td></tr>
+                                <tr class="table-row-hover" data-name="universal indicator solution 0.5 lt"><td class="py-3 px-5 font-medium text-slate-800">Universal Indicator Solution</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">0.5 LT</td><td class="py-3 px-5 text-right font-semibold text-slate-400">On Request</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Furniture Table -->
+            <div id="panel-furniture" class="tab-panel hidden">
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+                    <div class="product-table-wrap">
+                        <table class="w-full text-sm" id="table-furniture">
+                            <thead class="sticky top-0 bg-maxsi-blue z-10">
+                                <tr>
+                                    <th class="text-left py-4 px-5 text-white font-semibold text-xs uppercase tracking-wider">Item / Service</th>
+                                    <th class="text-left py-4 px-5 text-white font-semibold text-xs uppercase tracking-wider hidden sm:table-cell">Description</th>
+                                    <th class="text-right py-4 px-5 text-white font-semibold text-xs uppercase tracking-wider">Price (KES)</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100">
+                                <tr class="bg-slate-50"><td colspan="3" class="py-3 px-5 font-bold text-maxsi-blue text-xs uppercase tracking-wider">Furniture (Supply on Order)</td></tr>
+                                <tr class="table-row-hover" data-name="beds students"><td class="py-3 px-5 font-medium text-slate-800">Beds</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">Students beds</td><td class="py-3 px-5 text-right font-semibold text-slate-400">On Order</td></tr>
+                                <tr class="table-row-hover" data-name="double decker bed metallic frame mesh wire"><td class="py-3 px-5 font-medium text-slate-800">Double Decker Bed</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">Metallic frame with mesh wire</td><td class="py-3 px-5 text-right font-semibold text-slate-400">On Order</td></tr>
+                                <tr class="table-row-hover" data-name="laboratory stools"><td class="py-3 px-5 font-medium text-slate-800">Laboratory Stools</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">—</td><td class="py-3 px-5 text-right font-semibold text-slate-400">On Order</td></tr>
+                                <tr class="table-row-hover" data-name="student lockers chairs"><td class="py-3 px-5 font-medium text-slate-800">Student Lockers and Chairs</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">—</td><td class="py-3 px-5 text-right font-semibold text-slate-400">On Order</td></tr>
+                                <tr class="table-row-hover" data-name="teachers desks"><td class="py-3 px-5 font-medium text-slate-800">Teachers Desks</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">—</td><td class="py-3 px-5 text-right font-semibold text-slate-400">On Order</td></tr>
+                                <tr class="bg-slate-50"><td colspan="3" class="py-3 px-5 font-bold text-maxsi-blue text-xs uppercase tracking-wider">Gas & Water Fittings</td></tr>
+                                <tr class="table-row-hover" data-name="copper pipe per foot"><td class="py-3 px-5 font-medium text-slate-800">Copper Pipe</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">Per foot</td><td class="py-3 px-5 text-right font-semibold text-slate-400">On Request</td></tr>
+                                <tr class="table-row-hover" data-name="gas tap one way complete"><td class="py-3 px-5 font-medium text-slate-800">Gas Tap</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">One way complete</td><td class="py-3 px-5 text-right font-semibold text-slate-400">On Request</td></tr>
+                                <tr class="table-row-hover" data-name="gas tap two way complete"><td class="py-3 px-5 font-medium text-slate-800">Gas Tap</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">Two way complete</td><td class="py-3 px-5 text-right font-semibold text-slate-400">On Request</td></tr>
+                                <tr class="table-row-hover" data-name="laboratory sink medium 18x12x5"><td class="py-3 px-5 font-medium text-slate-800">Laboratory Sink</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">Medium (18"x12"x5")</td><td class="py-3 px-5 text-right font-semibold text-slate-400">On Request</td></tr>
+                                <tr class="table-row-hover" data-name="rubber tubing light wall per meter"><td class="py-3 px-5 font-medium text-slate-800">Rubber Tubing</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">Light wall (per meter)</td><td class="py-3 px-5 text-right font-semibold text-slate-400">On Request</td></tr>
+                                <tr class="table-row-hover" data-name="swan neck water tap"><td class="py-3 px-5 font-medium text-slate-800">Swan Neck Water Tap</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">—</td><td class="py-3 px-5 text-right font-semibold text-maxsi-blue">2,200 – 3,200</td></tr>
+                                <tr class="bg-slate-50"><td colspan="3" class="py-3 px-5 font-bold text-maxsi-blue text-xs uppercase tracking-wider">Installation Services</td></tr>
+                                <tr class="table-row-hover" data-name="bench work stools tables construction"><td class="py-3 px-5 font-medium text-slate-800">Bench Work, Stools & Tables</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">Construction</td><td class="py-3 px-5 text-right font-semibold text-slate-400">Depends on size</td></tr>
+                                <tr class="table-row-hover" data-name="gas installation"><td class="py-3 px-5 font-medium text-slate-800">Gas Installation</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">—</td><td class="py-3 px-5 text-right font-semibold text-slate-400">Depends on size</td></tr>
+                                <tr class="table-row-hover" data-name="laboratory design"><td class="py-3 px-5 font-medium text-slate-800">Laboratory Design</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">—</td><td class="py-3 px-5 text-right font-semibold text-slate-400">Depends on material</td></tr>
+                                <tr class="table-row-hover" data-name="water and drainage"><td class="py-3 px-5 font-medium text-slate-800">Water and Drainage</td><td class="py-3 px-5 text-slate-500 hidden sm:table-cell">—</td><td class="py-3 px-5 text-right font-semibold text-slate-400">Depends on size</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6 flex items-start gap-3 bg-amber-50 border border-amber-200 rounded-xl p-4 max-w-2xl mx-auto">
+                <i data-lucide="info" class="w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0"></i>
+                <div>
+                    <p class="text-sm font-semibold text-amber-800">Pricing Notice</p>
+                    <p class="text-xs text-amber-700 mt-1">V.A.T is inclusive in all listed prices. Prices are liable to change without prior notice. Items marked "On Request" — please contact us via WhatsApp for a quote.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SERVICES ========== -->
+    <section id="services" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <div class="inline-flex items-center gap-2 bg-maxsi-orange/10 border border-maxsi-orange/20 rounded-full px-4 py-1.5 mb-6">
+                    <i data-lucide="wrench" class="w-3.5 h-3.5 text-maxsi-orange"></i>
+                    <span class="text-xs font-bold text-maxsi-orange uppercase tracking-wider">Specialized Services</span>
+                </div>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-maxsi-blue-dark tracking-tight mb-4">Beyond Supplies — We Build Labs</h2>
+                <p class="text-lg text-slate-500">Expert-led installation and design services backed by hands-on laboratory experience.</p>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="card-lift bg-slate-50 rounded-2xl p-7 border border-slate-100 group">
+                    <div class="w-14 h-14 bg-maxsi-blue/10 rounded-2xl flex items-center justify-center mb-5 group-hover:bg-maxsi-blue transition-colors">
+                        <i data-lucide="flame" class="w-7 h-7 text-maxsi-blue group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-800 mb-2">Gas Installation</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Safe, standard-compliant gas fitting for laboratories. Complete with copper piping, gas taps, and safety fixtures.</p>
+                </div>
+                <div class="card-lift bg-slate-50 rounded-2xl p-7 border border-slate-100 group">
+                    <div class="w-14 h-14 bg-maxsi-blue/10 rounded-2xl flex items-center justify-center mb-5 group-hover:bg-maxsi-blue transition-colors">
+                        <i data-lucide="droplets" class="w-7 h-7 text-maxsi-blue group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-800 mb-2">Water Installation</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Professional plumbing with swan neck taps, laboratory sinks, and proper drainage systems for labs.</p>
+                </div>
+                <div class="card-lift bg-slate-50 rounded-2xl p-7 border border-slate-100 group">
+                    <div class="w-14 h-14 bg-maxsi-blue/10 rounded-2xl flex items-center justify-center mb-5 group-hover:bg-maxsi-blue transition-colors">
+                        <i data-lucide="pencil-ruler" class="w-7 h-7 text-maxsi-blue group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-800 mb-2">Lab Design & Construction</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">End-to-end design of functional, ergonomic labs — from layout planning to complete construction.</p>
+                </div>
+                <div class="card-lift bg-slate-50 rounded-2xl p-7 border border-slate-100 group">
+                    <div class="w-14 h-14 bg-maxsi-blue/10 rounded-2xl flex items-center justify-center mb-5 group-hover:bg-maxsi-blue transition-colors">
+                        <i data-lucide="lightbulb" class="w-7 h-7 text-maxsi-blue group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-800 mb-2">Laboratory Advisory</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Professional consultation for research institutions and schools on lab setup, upgrades, and compliance.</p>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <a href="https://wa.me/254721329595?text=Hello%20MAXSI%2C%20I%27m%20interested%20in%20your%20lab%20installation%20services." target="_blank" class="inline-flex items-center gap-3 bg-maxsi-orange hover:bg-maxsi-orange-dark text-white font-bold px-8 py-4 rounded-2xl shadow-lg hover:shadow-xl transition-all">
+                    <i data-lucide="message-circle" class="w-5 h-5"></i> Request a Lab Design Quote
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== ABOUT FOUNDER ========== -->
+    <section id="about" class="py-20 hero-gradient hero-pattern relative overflow-hidden">
+        <div class="absolute top-10 left-10 w-64 h-64 bg-maxsi-orange/5 rounded-full blur-3xl"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 relative">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                <div class="relative">
+                    <div class="w-full max-w-md mx-auto">
+                        <div class="bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-sm">
+                            <div class="flex items-center gap-4 mb-6">
+                                <div class="w-20 h-20 bg-maxsi-orange/20 rounded-2xl flex items-center justify-center">
+                                    <i data-lucide="user" class="w-10 h-10 text-maxsi-orange"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-2xl font-bold text-white">Bernard Maina</h3>
+                                    <p class="text-blue-200 text-sm">Founder & Lead Consultant</p>
+                                </div>
+                            </div>
+                            <div class="space-y-3">
+                                <div class="flex items-center gap-3 text-blue-200 text-sm"><i data-lucide="award" class="w-4 h-4 text-maxsi-orange"></i><span>Chemical Analyst</span></div>
+                                <div class="flex items-center gap-3 text-blue-200 text-sm"><i data-lucide="flask-conical" class="w-4 h-4 text-maxsi-orange"></i><span>Certified Lab Technician</span></div>
+                                <div class="flex items-center gap-3 text-blue-200 text-sm"><i data-lucide="calendar" class="w-4 h-4 text-maxsi-orange"></i><span>Founded MAXSI in 2016</span></div>
+                                <div class="flex items-center gap-3 text-blue-200 text-sm"><i data-lucide="map-pin" class="w-4 h-4 text-maxsi-orange"></i><span>Olkalou Juakali, Kenya</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="space-y-6">
+                    <div class="inline-flex items-center gap-2 bg-maxsi-orange/15 border border-maxsi-orange/30 rounded-full px-4 py-1.5">
+                        <i data-lucide="star" class="w-3.5 h-3.5 text-maxsi-orange"></i>
+                        <span class="text-xs font-bold text-maxsi-orange uppercase tracking-wider">About the Founder</span>
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight">"Science is Practicals" —<br><span class="motto-accent">A Philosophy Built Into Every Product</span></h2>
+                    <p class="text-blue-200/90 text-lg leading-relaxed">Bernard Maina, a certified Chemical Analyst and Lab Technician, founded MAXSI in 2016 with a simple but powerful belief: <strong class="text-white">science happens in the lab, not just the textbook.</strong></p>
+                    <p class="text-blue-200/80 leading-relaxed">His hands-on experience ensures that every gas and water installation meets professional safety standards, every piece of furniture is built for durability, and every recommendation empowers students and researchers to truly learn by doing.</p>
+                    <div class="grid grid-cols-3 gap-4 pt-4">
+                        <div class="glass-card rounded-xl p-4 text-center"><p class="text-2xl font-bold text-white">8+</p><p class="text-xs text-blue-200 mt-1">Years Experience</p></div>
+                        <div class="glass-card rounded-xl p-4 text-center"><p class="text-2xl font-bold text-white">100+</p><p class="text-xs text-blue-200 mt-1">Products Stocked</p></div>
+                        <div class="glass-card rounded-xl p-4 text-center"><p class="text-2xl font-bold text-white">50+</p><p class="text-xs text-blue-200 mt-1">Labs Equipped</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer id="contact" class="bg-maxsi-blue-dark pt-16 pb-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-14">
+                <div class="lg:col-span-1">
+                    <div class="flex items-center gap-3 mb-5">
+                        <img src="https://z-cdn-media.chatglm.cn/files/00ce45ef-0558-4758-b728-7e28608c3a6a.png?auth_key=1874978825-48e46d0f194e4f6386a0a0ff2b40c1ed-0-62b5fcdc8483d08c53f215ed0171fad9" alt="MAXSI" class="w-[100px] h-[100px] rounded-2xl bg-white p-1.5">
+                        <div>
+                            <span class="text-white font-extrabold text-sm tracking-tight">MAXSI GENERAL LAB</span>
+                            <span class="text-blue-300 text-xs block">& SCHOOL SUPPLIES</span>
+                        </div>
+                    </div>
+                    <p class="text-blue-300/70 text-sm leading-relaxed mb-4">Science is Practicals — Trust MAXSI for all your laboratory and school supply needs.</p>
+                    <div class="flex items-center gap-2 text-maxsi-orange font-serif font-semibold"><i data-lucide="flask-conical" class="w-4 h-4"></i><span>"Science is Practicals"</span></div>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4">Products</h4>
+                    <ul class="space-y-2.5">
+                        <li><a href="#products" class="text-blue-300/70 hover:text-white text-sm transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3"></i>Lab Equipment</a></li>
+                        <li><a href="#products" class="text-blue-300/70 hover:text-white text-sm transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3"></i>Glassware & Apparatus</a></li>
+                        <li><a href="#products" class="text-blue-300/70 hover:text-white text-sm transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3"></i>Chemicals & Reagents</a></li>
+                        <li><a href="#products" class="text-blue-300/70 hover:text-white text-sm transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3"></i>School Furniture</a></li>
+                        <li><a href="#products" class="text-blue-300/70 hover:text-white text-sm transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3"></i>Lab Stools & Tables</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4">Services</h4>
+                    <ul class="space-y-2.5">
+                        <li><a href="#services" class="text-blue-300/70 hover:text-white text-sm transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3"></i>Gas Installation</a></li>
+                        <li><a href="#services" class="text-blue-300/70 hover:text-white text-sm transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3"></i>Water Installation</a></li>
+                        <li><a href="#services" class="text-blue-300/70 hover:text-white text-sm transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3"></i>Lab Design</a></li>
+                        <li><a href="#services" class="text-blue-300/70 hover:text-white text-sm transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3"></i>Custom Furniture</a></li>
+                        <li><a href="#services" class="text-blue-300/70 hover:text-white text-sm transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3"></i>Lab Advisory</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4">Contact Us</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-3"><i data-lucide="map-pin" class="w-4 h-4 text-maxsi-orange mt-0.5 flex-shrink-0"></i><span class="text-blue-300/70 text-sm">Olkalou Juakali<br>P.O BOX 1455</span></li>
+                        <li class="flex items-center gap-3"><i data-lucide="phone" class="w-4 h-4 text-maxsi-orange flex-shrink-0"></i><div class="text-blue-300/70 text-sm"><a href="tel:0101995312" class="hover:text-white transition-colors block">0101995312</a><a href="tel:0713542758" class="hover:text-white transition-colors block">0713542758</a></div></li>
+                        <li class="flex items-center gap-3"><svg class="w-4 h-4 text-green-400 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg><a href="https://wa.me/254721329595" target="_blank" class="text-green-400 hover:text-green-300 text-sm font-semibold transition-colors">0721 329 595</a></li>
+                        <li class="flex items-center gap-3"><i data-lucide="mail" class="w-4 h-4 text-maxsi-orange flex-shrink-0"></i><a href="mailto:maxsigenlab2016@gmail.com" class="text-blue-300/70 hover:text-white text-sm transition-colors break-all">maxsigenlab2016@gmail.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <p class="text-blue-400/50 text-xs text-center sm:text-left">© 2024 MAXSI General Lab & School Supplies. All rights reserved.</p>
+                <p class="text-blue-400/50 text-xs flex items-center gap-1.5"><i data-lucide="map-pin" class="w-3 h-3"></i> Located at Olkalou Juakali</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========== FLOATING WHATSAPP ========== -->
+    <a href="https://wa.me/254721329595?text=Hello%20MAXSI%2C%20I%27d%20like%20to%20enquire%20about%20your%20products." target="_blank" class="whatsapp-float w-16 h-16 bg-green-500 hover:bg-green-600 rounded-full flex items-center justify-center shadow-2xl shadow-green-500/30 hover:scale-110 transition-all duration-300">
+        <svg class="w-8 h-8 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <!-- ========== TOAST ========== -->
+    <div id="toast" class="fixed bottom-24 right-6 z-50 hidden">
+        <div class="toast bg-maxsi-blue-dark text-white px-5 py-3 rounded-xl shadow-2xl flex items-center gap-3 text-sm font-medium">
+            <i data-lucide="check-circle" class="w-5 h-5 text-green-400"></i>
+            <span id="toastMsg">Message sent!</span>
+        </div>
+    </div>
+
+    <!-- ========== SCRIPTS ========== -->
+    <script>
+        lucide.createIcons();
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('bg-maxsi-blue-dark/95', 'backdrop-blur-xl', 'shadow-lg');
+            } else {
+                header.classList.remove('bg-maxsi-blue-dark/95', 'backdrop-blur-xl', 'shadow-lg');
+            }
+        });
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        menuToggle.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
+        document.querySelectorAll('.mobile-link').forEach(link => { link.addEventListener('click', () => mobileMenu.classList.add('hidden')); });
+        let currentTab = 'equipment';
+        function switchTab(tab) {
+            currentTab = tab;
+            document.querySelectorAll('.tab-panel').forEach(p => p.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(b => { b.classList.remove('tab-active'); b.classList.add('bg-white', 'border', 'border-slate-200', 'text-slate-600'); });
+            document.getElementById('panel-' + tab).classList.remove('hidden');
+            const activeBtn = document.getElementById('tab-' + tab);
+            activeBtn.classList.add('tab-active');
+            activeBtn.classList.remove('bg-white', 'border', 'border-slate-200', 'text-slate-600');
+            filterProducts();
+        }
+        const searchInput = document.getElementById('productSearch');
+        searchInput.addEventListener('input', filterProducts);
+        function filterProducts() {
+            const query = searchInput.value.toLowerCase().trim();
+            const table = document.getElementById('table-' + currentTab);
+            const rows = table.querySelectorAll('tbody tr:not(.bg-slate-50)');
+            let count = 0;
+            rows.forEach(row => {
+                const name = row.getAttribute('data-name') || '';
+                const text = row.textContent.toLowerCase();
+                if (!query || name.includes(query) || text.includes(query)) { row.style.display = ''; count++; }
+                else { row.style.display = 'none'; }
+            });
+            table.querySelectorAll('tr.bg-slate-50').forEach(hdr => {
+                let visCount = 0; let sib = hdr.nextElementSibling;
+                while (sib && !sib.classList.contains('bg-slate-50')) { if (sib.style.display !== 'none') visCount++; sib = sib.nextElementSibling; }
+                hdr.style.display = visCount > 0 ? '' : 'none';
+            });
+            document.getElementById('resultCount').textContent = count + ' item' + (count !== 1 ? 's' : '') + ' found';
+        }
+        filterProducts();
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMsg').textContent = msg;
+            toast.classList.remove('hidden');
+            setTimeout(() => toast.classList.add('hidden'), 3000);
+        }
+    </script>
+</body>
+</html>
