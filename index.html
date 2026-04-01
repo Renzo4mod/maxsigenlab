@@ -125,6 +125,72 @@
         .dark-section-divider {
             border-color: rgba(255,255,255,0.06);
         }
+
+        /* ===== Service Card Hover Image Panel ===== */
+        .service-card {
+            position: relative;
+            z-index: 1;
+            overflow: visible !important;
+        }
+        .service-card:hover {
+            z-index: 60;
+        }
+        .service-card .img-panel {
+            position: absolute;
+            top: calc(100% + 10px);
+            left: 50%;
+            transform: translateX(-50%) translateY(-12px) scale(0.97);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.35s cubic-bezier(0.4,0,0.2,1),
+                        transform 0.35s cubic-bezier(0.4,0,0.2,1),
+                        visibility 0.35s;
+            pointer-events: none;
+            z-index: 60;
+        }
+        .service-card:hover .img-panel {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0) scale(1);
+            pointer-events: auto;
+        }
+        .img-panel-inner {
+            background: rgba(10,15,30,0.96);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 16px;
+            padding: 10px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05);
+            min-width: 340px;
+        }
+        .img-panel-inner::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: 50%;
+            transform: translateX(-50%) rotate(45deg);
+            width: 12px;
+            height: 12px;
+            background: rgba(10,15,30,0.96);
+            border-left: 1px solid rgba(255,255,255,0.12);
+            border-top: 1px solid rgba(255,255,255,0.12);
+        }
+        .img-panel-inner img {
+            border-radius: 10px;
+            width: 100%;
+            height: 130px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease, filter 0.3s ease;
+            filter: brightness(0.9) saturate(1.1);
+        }
+        .img-panel-inner img:hover {
+            transform: scale(1.03);
+            filter: brightness(1) saturate(1.2);
+        }
+        .services-grid {
+            overflow: visible !important;
+        }
     </style>
 </head>
 <body class="bg-black text-slate-300">
@@ -549,36 +615,82 @@
                 <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-4">Beyond Supplies — We Build Labs</h2>
                 <p class="text-lg text-slate-400">Expert-led installation and design services backed by hands-on laboratory experience.</p>
             </div>
-            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="card-lift bg-white/[0.03] rounded-2xl p-7 border border-white/[0.06] group">
+
+            <!-- Hover hint -->
+            <p class="text-center text-xs text-slate-600 mb-6 flex items-center justify-center gap-1.5">
+                <i data-lucide="mouse-pointer-click" class="w-3.5 h-3.5"></i>
+                Hover over service cards to see our work
+            </p>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 services-grid" style="overflow:visible;">
+
+                <!-- Gas Installation — Images 1 & 3 -->
+                <div class="service-card card-lift bg-white/[0.03] rounded-2xl p-7 border border-white/[0.06] group cursor-default">
                     <div class="w-14 h-14 bg-maxsi-blue/10 rounded-2xl flex items-center justify-center mb-5 group-hover:bg-maxsi-blue transition-colors">
                         <i data-lucide="flame" class="w-7 h-7 text-maxsi-blue-light group-hover:text-white transition-colors"></i>
                     </div>
                     <h3 class="text-lg font-bold text-white mb-2">Gas Installation</h3>
                     <p class="text-sm text-slate-400 leading-relaxed">Safe, standard-compliant gas fitting for laboratories. Complete with copper piping, gas taps, and safety fixtures.</p>
+                    <div class="img-panel">
+                        <div class="img-panel-inner">
+                            <p class="text-[10px] font-bold text-maxsi-orange uppercase tracking-widest mb-2 px-1">Our Gas Installations</p>
+                            <div class="grid grid-cols-2 gap-2">
+                                <img src="https://z-cdn-media.chatglm.cn/files/8c1974f7-512b-4f99-a903-a4869697bf8b.jpg?auth_key=1875077966-985f16149749423c9d8540ef1914076b-0-e03c85f3774732f249c26f6dafd0fb47" alt="Gas installation lab 1">
+                                <img src="https://z-cdn-media.chatglm.cn/files/3415eed6-5896-4330-b1a5-0a13fb6bfdb1.jpg?auth_key=1875077966-bb79a8056ca04a299694fe1a1589cd88-0-a37be8cba52861f2b56d014f40765faa" alt="Gas installation lab 3">
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-lift bg-white/[0.03] rounded-2xl p-7 border border-white/[0.06] group">
+
+                <!-- Water Installation — Images 1 & 2 -->
+                <div class="service-card card-lift bg-white/[0.03] rounded-2xl p-7 border border-white/[0.06] group cursor-default">
                     <div class="w-14 h-14 bg-maxsi-blue/10 rounded-2xl flex items-center justify-center mb-5 group-hover:bg-maxsi-blue transition-colors">
                         <i data-lucide="droplets" class="w-7 h-7 text-maxsi-blue-light group-hover:text-white transition-colors"></i>
                     </div>
                     <h3 class="text-lg font-bold text-white mb-2">Water Installation</h3>
                     <p class="text-sm text-slate-400 leading-relaxed">Professional plumbing with swan neck taps, laboratory sinks, and proper drainage systems for labs.</p>
+                    <div class="img-panel">
+                        <div class="img-panel-inner">
+                            <p class="text-[10px] font-bold text-maxsi-orange uppercase tracking-widest mb-2 px-1">Our Water Installations</p>
+                            <div class="grid grid-cols-2 gap-2">
+                                <img src="https://z-cdn-media.chatglm.cn/files/8c1974f7-512b-4f99-a903-a4869697bf8b.jpg?auth_key=1875077966-985f16149749423c9d8540ef1914076b-0-e03c85f3774732f249c26f6dafd0fb47" alt="Water installation lab 1">
+                                <img src="https://z-cdn-media.chatglm.cn/files/773dd728-bbb1-4942-a0b3-17f12c0609d7.jpg?auth_key=1875077966-fe54ca1ad9df434fa14064411b396135-0-4188fd65b938044c63c5b373ce29e1b1" alt="Water installation lab 2">
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-lift bg-white/[0.03] rounded-2xl p-7 border border-white/[0.06] group">
+
+                <!-- Lab Design & Construction — Images 1, 4, 5, 6 (UPDATED img 6) -->
+                <div class="service-card card-lift bg-white/[0.03] rounded-2xl p-7 border border-white/[0.06] group cursor-default">
                     <div class="w-14 h-14 bg-maxsi-blue/10 rounded-2xl flex items-center justify-center mb-5 group-hover:bg-maxsi-blue transition-colors">
                         <i data-lucide="pencil-ruler" class="w-7 h-7 text-maxsi-blue-light group-hover:text-white transition-colors"></i>
                     </div>
                     <h3 class="text-lg font-bold text-white mb-2">Lab Design & Construction</h3>
                     <p class="text-sm text-slate-400 leading-relaxed">End-to-end design of functional, ergonomic labs — from layout planning to complete construction.</p>
+                    <div class="img-panel">
+                        <div class="img-panel-inner" style="min-width:380px;">
+                            <p class="text-[10px] font-bold text-maxsi-orange uppercase tracking-widest mb-2 px-1">Our Lab Projects</p>
+                            <div class="grid grid-cols-2 gap-2">
+                                <img src="https://z-cdn-media.chatglm.cn/files/8c1974f7-512b-4f99-a903-a4869697bf8b.jpg?auth_key=1875077966-985f16149749423c9d8540ef1914076b-0-e03c85f3774732f249c26f6dafd0fb47" alt="Lab construction 1" style="height:120px;">
+                                <img src="https://z-cdn-media.chatglm.cn/files/d6bd6640-2c13-4d5f-89d9-c2b611e9eca5.jpg?auth_key=1875077966-800b04351a0e4ffd937562bccdc1544a-0-cfa81ed19e58e8fa7146ed112aa3169d" alt="Lab construction 4" style="height:120px;">
+                                <img src="https://z-cdn-media.chatglm.cn/files/9abe1101-9f22-40c9-ab37-7d2f17b95e77.jpg?auth_key=1875077966-b2a17c36283947c68e2e3041a432229c-0-15a79eca3db38309318ddeba6d7634fd" alt="Lab construction 5" style="height:120px;">
+                                <img src="https://z-cdn-media.chatglm.cn/files/297817d4-f34d-46ff-a743-c95ec01cbfee.jpg?auth_key=1875078410-e4bca82d0462491d957938bb705a0280-0-aaf1353808c7391993316dc17d9f3e6b" alt="Student desks furniture 6" style="height:120px;">
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-lift bg-white/[0.03] rounded-2xl p-7 border border-white/[0.06] group">
+
+                <!-- Laboratory Advisory — No images -->
+                <div class="service-card card-lift bg-white/[0.03] rounded-2xl p-7 border border-white/[0.06] group cursor-default">
                     <div class="w-14 h-14 bg-maxsi-blue/10 rounded-2xl flex items-center justify-center mb-5 group-hover:bg-maxsi-blue transition-colors">
                         <i data-lucide="lightbulb" class="w-7 h-7 text-maxsi-blue-light group-hover:text-white transition-colors"></i>
                     </div>
                     <h3 class="text-lg font-bold text-white mb-2">Laboratory Advisory</h3>
                     <p class="text-sm text-slate-400 leading-relaxed">Professional consultation for research institutions and schools on lab setup, upgrades, and compliance.</p>
                 </div>
+
             </div>
+
             <div class="text-center mt-12">
                 <a href="https://wa.me/254721329595?text=Hello%20MAXSI%2C%20I%27m%20interested%20in%20your%20lab%20installation%20services." target="_blank" class="inline-flex items-center gap-3 bg-maxsi-orange hover:bg-maxsi-orange-dark text-white font-bold px-8 py-4 rounded-2xl shadow-lg hover:shadow-xl transition-all">
                     <i data-lucide="message-circle" class="w-5 h-5"></i> Request a Lab Design Quote
